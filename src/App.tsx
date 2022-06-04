@@ -1,10 +1,15 @@
 import { FC } from 'react'
+import { Wrapper } from '@/components'
+import { AppContextProvider } from './contexts/AppContext'
+import { CartContextProvider } from './contexts/CartContext'
 
 const App: FC = () => {
   return (
-    <>
-      <h1>Hello <span>Bye</span></h1>
-    </>
+    <CartContextProvider>
+      <AppContextProvider>
+        <Wrapper />
+      </AppContextProvider>
+    </CartContextProvider>
   )
 }
 

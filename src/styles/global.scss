@@ -1,6 +1,25 @@
-h1 {
-  color: red;
-  span {
-    color: green
-  }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+@import './components.scss';
