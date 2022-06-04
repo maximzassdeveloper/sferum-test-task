@@ -4,7 +4,7 @@ import { Header, Catalog, Cart } from '.'
 
 export const Wrapper: FC = () => {
   return (
-    <Layout>
+    <Layout style={{ minHeight: '100vh' }}>
       <Header />
       <div className="container">
         <Row>

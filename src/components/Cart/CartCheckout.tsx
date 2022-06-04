@@ -33,6 +33,7 @@ export const CartCheckout: FC = () => {
       </div>
       <Button 
         className='cart-checkout__button'
+        type='primary'
         disabled={!books.length}
         onClick={checkoutHandler}
       >

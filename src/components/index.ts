@@ -1,5 +1,5 @@
 export { Header } from './Header'
-export { Catalog } from './Catalog'
+export { Catalog } from './Catalog/Catalog'
 export { Wrapper } from './Wrapper'
 export { Cart } from './Cart/Cart'
 export { Book } from './Book'

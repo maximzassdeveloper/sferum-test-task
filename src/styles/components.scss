@@ -7,6 +7,7 @@
 .header {
   background: #fff;
   box-shadow: 0 5px 10px rgba(#000, .1);
+  margin-bottom: 30px;
 }
 
 .logo {
@@ -20,7 +21,7 @@
 }
 
 .book-list {
-  margin-top: 30px;
+  margin-top: 20px;
   .ant-col {
     margin-bottom: 15px;
   }
@@ -72,10 +73,9 @@
 }
 
 .cart {
-  margin-top: 30px;
   background: #fff;
   height: 100%;
-  max-height: calc(100vh - 140px);
+  height: calc(100vh - 140px);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -106,6 +106,7 @@
     border-top: 1px solid #ccc;
     padding: 10px 15px;
     span {
+      font-weight: 700;
       &:first-child {
         margin-right: 10px;
       }
@@ -165,6 +166,36 @@
     }
     &:hover {
       background: #eee;
+    }
+  }
+}
+
+.filters {
+  &__row {
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  &__select {
+    min-width: 220px;
+    .ant-select-selection-placeholder {
+      color: #000;
+    }
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+  &__input input {
+    &::placeholder {
+      color: #000;
+    }
+  }
+  &__clear {
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    &:hover {
+      opacity: .7;
     }
   }
 }

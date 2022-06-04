@@ -15,7 +15,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       publicPath: isDevServer ? '/' : 'auto',
-      filename: '[name].[hash].js'
+      filename: '[name].[hash].js',
     },
     devServer: {
       port: 4300,
