@@ -4,6 +4,7 @@ import { IBook, IFilters } from '@/types'
 import { useDebounce } from '@/hooks/useDebounce'
 import { Filters } from './Filters'
 import { BookList } from './BookList'
+import './catalog.scss'
 
 export const Catalog: FC = () => {
 

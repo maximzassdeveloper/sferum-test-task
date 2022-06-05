@@ -1,0 +1,55 @@
+.book {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  height: 100%;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__image {
+    margin-top: 10px;
+    position: relative;
+    width: 135px;
+    height: 100%;
+    min-height: 180px;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  &__title {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2em;
+  }
+  &__price {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .book {
+    &__title {
+      font-size: 13px;
+    }
+    &__content {
+      padding: 10px
+    }
+  }
+}

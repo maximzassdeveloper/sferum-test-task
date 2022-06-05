@@ -6,12 +6,12 @@ export const Wrapper: FC = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header />
-      <div className="container">
-        <Row>
-          <Col span={16}>
+      <div className='container'>
+        <Row className='main-row' wrap={false}>
+          <Col className='catalog-col'>
             <Catalog />
           </Col>
-          <Col span={7} offset={1}>
+          <Col className='cart-col'>
             <Cart />
           </Col>
         </Row>

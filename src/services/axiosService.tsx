@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { SERVER_URL } from '@/utils/config'
 
-export const BASE_URL = `${SERVER_URL}/bookstore-api`
+export const BASE_URL = `http://45.8.249.57/bookstore-api`
 
 const defaultAxios = axios.create({
   baseURL: BASE_URL,

@@ -4,9 +4,10 @@ import { FC } from 'react'
 interface CountInputProps {
   value: number
   onChange: (value: number) => void  
+  max?: number
 }
 
-export const CountInput: FC<CountInputProps> = ({ value, onChange }) => {
+export const CountInput: FC<CountInputProps> = ({ value, onChange, max = 11 }) => {
 
   const minusHandler = () => {
     if (value <= 1) return
@@ -14,6 +15,7 @@ export const CountInput: FC<CountInputProps> = ({ value, onChange }) => {
   }
 
   const plusHandler = () => {
+    if (value >= max) return
     onChange(value+1)
   }
 
@@ -23,6 +25,8 @@ export const CountInput: FC<CountInputProps> = ({ value, onChange }) => {
       <InputNumber 
         className='count-input__input'
         value={value}
+        max={max}
+        min={1}
         onChange={onChange}
         controls={false}
       />  

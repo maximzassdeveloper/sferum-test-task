@@ -1,10 +1,9 @@
 import { FC } from 'react'
 import { ICartBook } from '@/types'
-import { imgPath } from '@/utils/helper'
 import { useCartContext } from '@/contexts/CartContext'
 import { Price } from '@/components'
-import deleteIcon from '@/assets/close.svg'
 import { CountInput } from './CountInput'
+import deleteIcon from '@/assets/close.svg'
 
 interface CartItemProps {
   book: ICartBook
@@ -18,12 +17,11 @@ export const CartItem: FC<CartItemProps> = ({ book }) => {
     <div className='cart-item'>
 
       <div className='cart-item__image'>
-        <img src={imgPath(book.coverUrl)} alt='' />
+        <img src={book.coverUrl} alt='' />
       </div>
 
       <div className='cart-item__content'>
         <h4 className='cart-item__name'>{book.name}</h4>
-        {/* <span className='cart-item__count'>{book.count} шт.</span> */}
         <div className='cart-item__bottom'>
           <CountInput 
             value={book.count}

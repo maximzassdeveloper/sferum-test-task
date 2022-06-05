@@ -59,7 +59,6 @@ export const Filters: FC<FiltersProps> = ({ filters, onChange, onClear }) => {
           <span className='filters__clear' onClick={onClear}>Очистить фильтры</span>
         )}
         
-
       </Row>
 
       <Input.Search 

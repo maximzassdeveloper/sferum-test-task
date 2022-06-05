@@ -1,1 +1,0 @@
-export const SERVER_URL = 'http://45.8.249.57'

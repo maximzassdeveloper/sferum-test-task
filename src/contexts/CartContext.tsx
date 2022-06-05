@@ -1,11 +1,13 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useContext, useEffect, useRef, useState } from 'react'
 import { IBook, ICartBook } from '@/types'
 
 interface ICartContext {
   books: ICartBook[]
-  loading: boolean
   total: number
   count: number
+
+  isMobileShow: boolean
+  setIsMobileShow: Dispatch<SetStateAction<boolean>>
 
   addBook: (book: IBook) => void
   removeBook: (name: string) => void
@@ -20,9 +22,9 @@ export const useCartContext = () => useContext(CartContext)
 export const CartContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
 
   const [books, setBooks] = useState<ICartBook[]>([])
-  const [loading, setLoading] = useState(true)
   const [total, setTotal] = useState(0)
   const [count, setCount] = useState(0)
+  const [isMobileShow, setIsMobileShow] = useState(false)
   const firstLoadContent = useRef(false)
 
   // Cart action functions
@@ -76,11 +78,9 @@ export const CartContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => 
 
   // Get saved books from localStorage
   useEffect(() => {
-    setLoading(true)
     firstLoadContent.current = true
     const savedBooks = localStorage.getItem('cart-books')
     if (savedBooks) setBooks(JSON.parse(savedBooks))
-    setLoading(false)
   }, [])
 
 
@@ -88,7 +88,9 @@ export const CartContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => 
     books,
     total,
     count,
-    loading,
+
+    isMobileShow,
+    setIsMobileShow,
 
     addBook,
     removeBook,
