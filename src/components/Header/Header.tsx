@@ -6,6 +6,7 @@ import { Price } from '@/components'
 
 import logoIcon from '@/assets/logo.svg'
 import cartIcon from '@/assets/cart.svg'
+import './header.scss'
 
 export const Header: FC = () => {
 

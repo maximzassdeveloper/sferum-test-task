@@ -1,4 +1,4 @@
-export { Header } from './Header'
+export { Header } from './Header/Header'
 export { Catalog } from './Catalog/Catalog'
 export { Wrapper } from './Wrapper'
 export { Cart } from './Cart/Cart'

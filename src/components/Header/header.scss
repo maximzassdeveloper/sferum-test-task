@@ -1,0 +1,53 @@
+.header {
+  background: #fff !important;
+  box-shadow: 0 5px 10px rgba(#000, .1);
+  margin-bottom: 30px;
+  padding: 0 !important;
+  z-index: 11;
+  .balance {
+    margin-left: auto;
+  }
+  &__cart {
+    margin-left: 15px;
+    cursor: pointer;
+    transition: .2s;
+    &:hover {
+      opacity: .3;
+    }
+    img {
+      height: 28px;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  img {
+    height: 28px;
+    margin-right: 8px;
+  }
+}
+
+
+@media screen and (max-width: 991px) {
+  .header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    height: 50px !important;
+    line-height: 50px !important;
+  }
+  .logo {
+    font-size: 0;
+    img {
+      height: 24px;
+      margin-right: 6px;
+    }
+  }
+}
