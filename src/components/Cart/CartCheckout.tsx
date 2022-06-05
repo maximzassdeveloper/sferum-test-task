@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Button, Modal } from 'antd'
 import { useCartContext } from '@/contexts/CartContext'
 import { useAppContext } from '@/contexts/AppContext'
+import { Price } from '@/components'
 
 export const CartCheckout: FC = () => {
 
@@ -29,7 +30,7 @@ export const CartCheckout: FC = () => {
     <div className='cart-checkout'>
       <div>
         <span>{count} шт.</span>
-        <span>{total} руб.</span>
+        <Price price={total} />
       </div>
       <Button 
         className='cart-checkout__button'

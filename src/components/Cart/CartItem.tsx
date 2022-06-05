@@ -2,7 +2,9 @@ import { FC } from 'react'
 import { ICartBook } from '@/types'
 import { imgPath } from '@/utils/helper'
 import { useCartContext } from '@/contexts/CartContext'
+import { Price } from '@/components'
 import deleteIcon from '@/assets/close.svg'
+import { CountInput } from './CountInput'
 
 interface CartItemProps {
   book: ICartBook
@@ -10,7 +12,7 @@ interface CartItemProps {
 
 export const CartItem: FC<CartItemProps> = ({ book }) => {
 
-  const { removeBook } = useCartContext()
+  const { removeBook, updateBook } = useCartContext()
 
   return (
     <div className='cart-item'>
@@ -21,8 +23,14 @@ export const CartItem: FC<CartItemProps> = ({ book }) => {
 
       <div className='cart-item__content'>
         <h4 className='cart-item__name'>{book.name}</h4>
-        <span className='cart-item__count'>{book.count} шт.</span>
-        <span className='cart-item__price'>{book.price * book.count} руб.</span>
+        {/* <span className='cart-item__count'>{book.count} шт.</span> */}
+        <div className='cart-item__bottom'>
+          <CountInput 
+            value={book.count}
+            onChange={val => updateBook(book.name, val)}
+          />
+          <Price className='cart-item__price' price={book.price * book.count} />
+        </div>
       </div>
 
       <div className='cart-item__delete' onClick={() => removeBook(book.name)}>

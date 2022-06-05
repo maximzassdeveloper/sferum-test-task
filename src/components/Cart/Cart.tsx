@@ -1,12 +1,16 @@
 import { FC } from 'react'
+import { List } from 'antd'
 import { useCartContext } from '@/contexts/CartContext'
 import { CartItem } from './CartItem'
+import { CartItemSkeleton } from './CartItemSkeleton'
 import { CartCheckout } from './CartCheckout'
+
 import cartIcon from '@/assets/cart.svg'
+import './cart.scss'
 
 export const Cart: FC = () => {
 
-  const { books } = useCartContext()
+  const { books, loading } = useCartContext()
 
   return (
     <div className='cart'>
@@ -15,16 +19,14 @@ export const Cart: FC = () => {
         <h3 className='cart__title'>Корзина <img src={cartIcon} alt='' /></h3>
       </div>
 
-      <div className='cart-books'>
-        {books.length 
-          ? books.map(book => 
-              <CartItem key={book.name} book={book} />
-            )
-          : <div className='cart-books__noresults'>
-              <p>Нет добавленных книг</p>
-            </div>
+      <List 
+        className='cart-books'
+        dataSource={books}
+        locale={{ emptyText: 'Нет добавленных книг' }}
+        renderItem={book => 
+          loading ? <CartItemSkeleton /> : <CartItem book={book} />
         }
-      </div>
+      />
 
       <CartCheckout />
 

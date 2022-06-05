@@ -8,6 +8,7 @@ import { BookList } from './BookList'
 export const Catalog: FC = () => {
 
   const [books, setBooks] = useState<IBook[]>([])
+  const [loading, setLoading] = useState(true)
   const [filters, setFilters] = useState<IFilters>({})
 
   const filterHandler = (name: keyof IFilters, value: string | number | null) => {
@@ -15,11 +16,13 @@ export const Catalog: FC = () => {
     if (!value) delete newFilters[name]
     
     setFilters(newFilters)
+    setLoading(true)
     debounsedFetchBooks(newFilters)
   }
 
   const onClearFilters = () => {
     setFilters({})
+    setLoading(true)
     fetchBooks({})
   }
 
@@ -27,6 +30,7 @@ export const Catalog: FC = () => {
     bookService.getBooks(actualFilters ?? filters)
       .then(resp => setBooks(resp.data))
       .catch(e => console.log(e))
+      .finally(() => setLoading(false))
   }
 
   const debounsedFetchBooks = useDebounce((f: IFilters) => fetchBooks(f), 500)
@@ -42,7 +46,10 @@ export const Catalog: FC = () => {
         filters={filters} 
         onClear={onClearFilters}
       />
-      <BookList books={books} />
+      <BookList 
+        books={books} 
+        loading={loading}
+      />
     </div>
   )
 }

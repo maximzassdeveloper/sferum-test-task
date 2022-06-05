@@ -1,23 +1,28 @@
 import { FC } from 'react'
-import { Col, Row } from 'antd'
-import { Book } from '@/components/Book'
+import { Col, List, Row } from 'antd'
+import { Book, BookSkeleton } from '@/components'
 import { IBook } from '@/types'
 
 interface BookListProps {
   books: IBook[]
+  loading: boolean
 }
 
-export const BookList: FC<BookListProps> = ({ books }) => {
+export const BookList: FC<BookListProps> = ({ books, loading }) => {
   return (
-    <Row className='book-list' gutter={10}>
-      {books.length 
-        ? books.map(book => 
-            <Col key={book.name} span={6}>
-              <Book book={book} />
-            </Col>
-          )
-        : <Col span={24}><p>Нет книг</p></Col>
+    <List 
+      className='book-list'
+      grid={{ gutter: 10, column: 4 }}
+      pagination={{
+        pageSize: 12
+      }}
+      dataSource={books}
+      locale={{ emptyText: 'Книг нет' }}
+      renderItem={book => 
+        <List.Item>
+          {loading ? <BookSkeleton /> : <Book book={book} />}
+        </List.Item>
       }
-    </Row>
+    />
   )
 }

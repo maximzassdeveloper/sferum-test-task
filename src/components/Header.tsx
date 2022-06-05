@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Layout, Row } from 'antd'
 import { useAppContext } from '@/contexts/AppContext'
+import { Price } from '@/components'
 import logoIcon from '@/assets/logo.svg'
 
 export const Header: FC = () => {
@@ -18,7 +19,7 @@ export const Header: FC = () => {
           </div>
 
           <div className='balance'>
-            Баланс {balance} руб.
+            Баланс <Price price={balance} />
           </div>
 
         </Row>

@@ -3,6 +3,7 @@ import { IBook, ICartBook } from '@/types'
 
 interface ICartContext {
   books: ICartBook[]
+  loading: boolean
   total: number
   count: number
 
@@ -19,6 +20,7 @@ export const useCartContext = () => useContext(CartContext)
 export const CartContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
 
   const [books, setBooks] = useState<ICartBook[]>([])
+  const [loading, setLoading] = useState(true)
   const [total, setTotal] = useState(0)
   const [count, setCount] = useState(0)
   const firstLoadContent = useRef(false)
@@ -74,9 +76,11 @@ export const CartContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => 
 
   // Get saved books from localStorage
   useEffect(() => {
+    setLoading(true)
     firstLoadContent.current = true
     const savedBooks = localStorage.getItem('cart-books')
     if (savedBooks) setBooks(JSON.parse(savedBooks))
+    setLoading(false)
   }, [])
 
 
@@ -84,6 +88,7 @@ export const CartContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => 
     books,
     total,
     count,
+    loading,
 
     addBook,
     removeBook,

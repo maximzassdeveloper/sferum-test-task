@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useContext, useState } from 'react'
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { useCartContext } from './CartContext'
 
 interface IAppContext {
@@ -18,11 +18,18 @@ export const AppContextProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   function checkout () {
     if (total > balance) return false
 
-    setBalance(oldBalance => oldBalance - total)
+    const newBalance = balance - total
+    setBalance(newBalance)
     clearCart()
+    localStorage.setItem('balance', String(newBalance))
 
     return true
   }
+
+  useEffect(() => {
+    const savedBalance = localStorage.getItem('balance')
+    if (savedBalance) setBalance(+savedBalance)
+  }, [])
 
   const defaultContext: IAppContext = {
     balance,

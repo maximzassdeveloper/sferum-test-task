@@ -1,8 +1,9 @@
 import { FC } from 'react'
+import { Button } from 'antd'
 import { IBook } from '@/types'
 import { imgPath } from '@/utils/helper'
-import { Button } from 'antd'
 import { useCartContext } from '@/contexts/CartContext'
+import { Price } from '@/components'
 
 interface BookProps {
   book: IBook
@@ -23,7 +24,7 @@ export const Book: FC<BookProps> = ({ book }) => {
       </div>
       <div className="book__content">
         <h3 className='book__title'>{book.name}</h3>
-        <span className='book__price'>{book.price} руб.</span>
+        <Price className='book__price' price={book.price} />
         <Button onClick={clickHandler}>В корзину</Button>
       </div>
     </div>
