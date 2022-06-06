@@ -7,11 +7,11 @@ export const Wrapper: FC = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Header />
       <div className='container'>
-        <Row className='main-row' wrap={false}>
+        <Row wrap={false}>
           <Col className='catalog-col'>
             <Catalog />
           </Col>
-          <Col className='cart-col'>
+          <Col>
             <Cart />
           </Col>
         </Row>

@@ -4,12 +4,8 @@
   margin: 0 auto;
 }
 
-.catalog-row {
-  flex: auto;
-}
-
-.cart-row {
-  flex: 350px;
+.catalog-col {
+  width: 100%;
 }
 
 @media screen and (max-width: 1240px) {

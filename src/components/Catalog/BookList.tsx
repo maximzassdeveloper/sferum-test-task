@@ -18,7 +18,7 @@ export const BookList: FC<BookListProps> = ({ books, loading }) => {
       pagination={{
         pageSize: 12
       }}
-      dataSource={books.length ? books : fakeArray}
+      dataSource={(!books.length && loading) ? fakeArray : books}
       locale={{ emptyText: 'Книг нет' }}
       renderItem={book => 
         <List.Item>
